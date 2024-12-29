@@ -132,7 +132,7 @@ var doubleq = (utils.doubleq = function (s) {
 
   */
 var doubleqq = (utils.doubleqq = function (s) {
-	return s.replace(/\'/g, "'");
+	return s.replace(/\'/g, "\\'");
 });
 
 /**
