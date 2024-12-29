@@ -3,10 +3,10 @@ on:
   push:
     # Only the default branch is supported.
     branches:
-    - develop
+      - develop
   schedule:
     # Weekly on Saturdays.
-    - cron:  '30 1 * * 6'
+    - cron: '30 1 * * 6'
 
 permissions: read-all
 
@@ -26,13 +26,13 @@ jobs:
         with:
           egress-policy: audit
 
-      - name: "Checkout code"
+      - name: 'Checkout code'
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-          
+
       - name: OSSF Scorecard action
-        uses: ossf/scorecard-action@dde01de2fdfb29acf692f25ffb46c10a6655057e
+        uses: ossf/scorecard-action@62b2cac7ed8198b15735ed49ab1e5cf35480ba46
         with:
           # OUTPUT: Path to file to store results
           results_file: results.sarif
@@ -48,7 +48,7 @@ jobs:
       # Upload the results as artifacts (optional). Commenting out will disable
       # uploads of run results in SARIF format to the repository Actions tab.
       # https://docs.github.com/en/actions/advanced-guides/storing-workflow-data-as-artifacts
-      - name: "Upload artifact"
+      - name: 'Upload artifact'
         uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
         with:
           name: SARIF file
@@ -57,7 +57,7 @@ jobs:
 
       # Upload the results to GitHub's code scanning dashboard (optional).
       # Commenting out will disable upload of results to your repo's Code Scanning dashboard
-      - name: "Upload to code-scanning"
+      - name: 'Upload to code-scanning'
         uses: github/codeql-action/upload-sarif@48ab28a6f5dbc2a99bf1e0131198dd8f1df78169 # v3.28.0
         with:
           sarif_file: results.sarif
